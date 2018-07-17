@@ -2,19 +2,19 @@ var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    Message = require('./api/models/msgModel'),
+    Product = require('./api/models/productModel'),
     bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/msgdb');
+mongoose.connect('mongodb://localhost/productsdb');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/msgRoutes');
+var routes = require('./api/routes/productRoutes');
 
 routes(app);
 
 app.listen(port);
 
-console.log('Message RESTful API server started on:', port);
+console.log('Products RESTful API server started on:', port);
